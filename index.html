@@ -5,10 +5,145 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        button{
+            cursor: pointer;
+        }
+        *{
+    margin:0;
+    padding: 0;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+.contain{
+    text-align: center;
+    background-color: rgba(71, 44, 44, 0.877);
+    height: 503px;
+    width: 461px;
+    margin: auto;
+    border-radius: 20px;
+    margin-top: 70px;
+}
+
+table{
+    margin: auto;
+}
+input{
+    font-size: 40px;
+    width: 400px;
+    height: 78px;
+    border-radius: 20px;
+    border-style: none;
+}
+button{
+    font-size: 40px;
+    background-color: azure;
+    height: 69px;
+    width: 100px;
+    border-radius: 20px;
+    cursor: pointer;
+    
+
+}
+    </style>
 </head>
 <body>
-    <h1>my name is hasan</h1>
-    <h2>I am student</h2>
-    <p>ami akjon singale amii prem korte sai</p>
+    <div class="main_container">
+        <div class="contain">
+            <h1>calculator</h1>
+            <div class="output-container">
+                <input type="text"  name="screen" id="screen" value="">
+            </div>
+            <table>
+                <tr>
+                    <td><button id="clear">AC</button></td>
+                    <td><button onclick="get_operator('C')">C</button></td>
+                    <td><button onclick="get_operator('%')">%</button></td>
+                    <td><button onclick="get_operator('*')">×</button></td>
+                    
+                </tr>
+                <tr>
+                    <td><button onclick="get_number(7)">7</button></td>
+                    <td><button onclick="get_number(8)">8</button></td>
+                    <td><button onclick="get_number(9)">9</button></td>
+                    <td><button onclick="get_operator('/')">÷</button></td>
+                    
+                </tr>
+                <tr>
+                    <td><button onclick="get_number(4)">4</button></td>
+                    <td><button onclick="get_number(5)">5</button></td>
+                    <td><button onclick="get_number(6)">6</button></td>
+                    <td><button onclick="get_operator('-')">-</button></td>
+                    
+                </tr>
+                <tr>
+                    <td><button onclick="get_number(1)">1</button></td>
+                    <td><button onclick="get_number(2)">2</button></td>
+                    <td><button onclick="get_number(3)">3</button></td>
+                    <td><button onclick="get_operator('+')">+</button></td>
+                    
+                </tr>
+                <tr>
+                    <td><button onclick="get_number(0)">0</button></td>
+                    <td><button onclick="get_number(00)">00</button></td>
+                    <td><button onclick="get_operator('.')">.</button></td>
+                    <td><button onclick="get_operator('=')">=</button></td>
+                    
+                </tr>
+            </table>
+                
+            
+        </div>
+    </div>
+
+    
+
+    <!-- <script src="assets/javascript.js"></script> -->
+    <script>
+        let screen =document.querySelector('input[name="screen"]')
+        let clear = document.querySelector('#clear')
+        var test =screen.value 
+        clear.addEventListener('click', function()
+        {
+            screen.value = ''
+        })
+       
+        function get_number(_value)
+        {
+            
+            if(screen.value != null)
+            {
+                screen.value += _value
+            }else
+            {
+                screen.value = _value
+            }
+            
+        }
+
+
+        function get_operator(_value)
+        {
+            if(_value == '='){
+                var cal_value = screen.value
+                screen.value = eval(cal_value)
+            }else if(_value == 'C'){
+                var result = screen.value;
+                screen.value = result.slice(0, result.length - 1)
+                if(result == '')
+                {
+                    screen.value = 0
+                }
+            }
+            else{
+                screen.value += _value
+            }
+            
+
+        }
+
+    </script>
 </body>
 </html>
